@@ -1,4 +1,11 @@
 -- ================================================
+-- 		VSCODE DISABLE KEYMAPS
+-- ================================================
+if not vim.g.vscode then
+  -- Minimal number of screen lines to keep above and below the cursor.
+  vim.opt.scrolloff = 999 
+end
+-- ================================================
 -- 		BASIC KEYMAPS
 -- ================================================
 -- SET LEADER KEY
@@ -8,8 +15,6 @@ vim.g.maplocalleader = ' '
 -- TODO: Actually set this
 -- Configurations that break VSCode
 
--- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 999 
 
 vim.opt.relativenumber = true
 
