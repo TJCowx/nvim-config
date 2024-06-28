@@ -12,8 +12,6 @@ end
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- TODO: Actually set this
--- Configurations that break VSCode
 
 
 vim.opt.relativenumber = true
