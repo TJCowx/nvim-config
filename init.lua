@@ -12,9 +12,8 @@ end
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-
-
 vim.opt.relativenumber = true
+vim.opt.number = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
