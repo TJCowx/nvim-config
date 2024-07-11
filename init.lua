@@ -27,6 +27,11 @@ vim.opt.clipboard = "unnamedplus"
 -- Save undo history
 vim.opt.undofile = true
 
+-- Set the default tabstop to 4 instead of 8
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
