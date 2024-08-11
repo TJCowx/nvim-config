@@ -1,10 +1,6 @@
--- ================================================
--- 		VSCODE DISABLE KEYMAPS
--- ================================================
-if not vim.g.vscode then
-	-- Minimal number of screen lines to keep above and below the cursor.
-	vim.opt.scrolloff = 999
-end
+-- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff = 999
+
 -- ================================================
 -- 		BASIC KEYMAPS
 -- ================================================
@@ -80,7 +76,7 @@ require("lazy").setup({
 		"olimorris/onedarkpro.nvim",
 		priority = 1000, -- Ensure it loads first
 		config = function()
-			isDark = true
+			IsDark = true
 			vim.cmd("colorscheme onedark")
 		end,
 	},
@@ -264,8 +260,6 @@ require("lazy").setup({
 			local servers = {
 				-- clangd = {},
 				-- gopls = {},
-				-- pyright = {},
-				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
@@ -274,6 +268,10 @@ require("lazy").setup({
 				-- But for many setups, the LSP (`tsserver`) will work just fine
 				-- tsserver = {},
 				--
+				svelte = {},
+				pyright = {},
+				rust_analyzer = {},
+				tsserver = {},
 
 				lua_ls = {
 					-- cmd = {...},
@@ -403,6 +401,11 @@ require("lazy").setup({
 				-- You can use a sub-list to tell conform to run *until* a formatter
 				-- is found.
 				javascript = { { "prettierd", "prettier" } },
+				typescript = { { "prettierd", "prettier" } },
+				javascriptreact = { { "prettierd", "prettier" } },
+				typescriptreact = { { "prettierd", "prettier" } },
+				html = { { "prettierd", "prettier" } },
+				css = { { "prettierd", "prettier" } },
 			},
 		},
 	},
@@ -646,17 +649,34 @@ require("lazy").setup({
 			end, { desc = "[S]earch [N]eovim files" })
 		end,
 	},
+
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+		},
+		config = function()
+			require("neo-tree").setup({
+				enable_git_status = true,
+			})
+		end,
+	},
 })
 
 -- ================================================
 -- 		PLUGINS CONFIG
 -- ================================================
+-- Theme toggler
 vim.keymap.set("n", "<Leader>tt", function()
-	if isDark then
-		isDark = false
+	if IsDark then
+		IsDark = false
 		vim.cmd("colorscheme tokyonight-day")
 	else
-		isDark = true
+		IsDark = true
 		vim.cmd("colorscheme onedark")
 	end
 end)
